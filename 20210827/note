@@ -11,8 +11,12 @@ Mo hinh MVC:
 
 php -S 127.0.0.1:8000
 
+http://127.0.0.1:8000/indexController.php
+
 var_dump($posts); die()
 
  die('asdfasdfasdf');
 
 MYSQL: ==> database "humg"
+====================
+sua ten hem o moi noi: shift+f6
