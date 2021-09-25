@@ -31,5 +31,6 @@ Tao ssh key: ssh-keygen -t ed25519 -C "cuongpm0196@gmail.com"
 Vao git: https://github.com/settings/keys => Add public key into GIT (lay tu: C:\Users\Dell E6430\.ssh)
 
 Git clone git@github.com:mbvb1223/codeforfun.git
-
+===========================================================
+git checkout -b cuong
 
