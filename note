@@ -33,4 +33,4 @@ Vao git: https://github.com/settings/keys => Add public key into GIT (lay tu: C:
 Git clone git@github.com:mbvb1223/codeforfun.git
 ===========================================================
 git checkout -b cuong
-
+https://github.com/mbvb1223/codeforfun/compare/master...cuong
