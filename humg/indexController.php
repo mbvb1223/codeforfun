@@ -7,12 +7,13 @@ class IndexController
     public function index()
     {
         $posts = $this->getPosts();
+        $delete = $this->delete();
         $parentCategories = $this->getParentCategories();
         $childCategories = $this->getChildCategories();
         $gioiThieu = $this->getPostsByCategoryId(1);
-        $thongBao = $this->getPostsByCategoryId(6);
-        $banTin = $this->getPostsByCategoryId(7);
-        $hoptacs = $this->gethoptac();
+        $thongBao = $this->getPostsByCategoryId(2);
+        $banTin = $this->getPostsByCategoryId(3);
+        $daoTao = $this->getPostsByCategoryId(4);
         require "view.phtml";
     }
 
@@ -21,12 +22,11 @@ class IndexController
         $postModel = new Post();
         return $postModel->getAll();
     }
-    public function gethoptac()
+    public function delete()
     {
-        $hoptacModel = new hoptac();
-        return $hoptacModel->getAll();
+        $deleteModel = new Post();
+        return $deleteModel->delete();
     }
-
     public function getParentCategories()
     {
         $categoryModel = new Category();
@@ -44,7 +44,11 @@ class IndexController
         $postModel = new Post();
         return $postModel->getByCategoryId($id);
     }
-
+    public function getAll()
+    {
+        $categoryModel = new Category();
+        return $categoryModel->getChildren();
+    }
 }
 
 $a = new IndexController();

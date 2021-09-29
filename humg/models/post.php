@@ -26,6 +26,7 @@ class Post
         return $posts;
     }
 
+
     public function getAll()
     {
         $servername = "localhost";
@@ -56,9 +57,12 @@ class Post
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        $title = $data['cuong'];
+        $title = $data['tittle'];
         $content = $data['content'];
-        $sql = "insert into posts(title, content) values ('$title', '$content')";
+        $created_at = $data['created_at'];
+        $category_id = $data['category_id'];
+        $thumbnail = $data['thumbnail'];
+        $sql = "insert into posts(title, content, created_at, category_id, thumbnail) values ('$title', '$content', '$created_at', '$category_id', '$thumbnail')";
 //        $conn->query($sql);
 
         if ($conn->query($sql) === TRUE) {
@@ -71,6 +75,24 @@ class Post
 
         return true;
     }
+    public function delete()
+    {
+        $id= $_GET['id'];
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "baitap5";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        $sql = "DELETE FROM post WHERE id=$id";
+
+        $conn->close();
+
+        return $posts;
+    }
+
 }
 
 //$a = new Post();

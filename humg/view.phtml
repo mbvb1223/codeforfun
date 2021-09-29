@@ -83,46 +83,64 @@
 </section>
 <section>
     <a href="https://humg.edu.vn/tin-tuc/Pages/default.aspx">
-        <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">TIN TỨC</h5></button>
+        <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">GIỚI THIỆU</h5></button>
     </a>
     <div style="display: flex;border-top: 40px;margin-left: 50px">
-        <?php foreach ($posts as $post) { ?>
+        <?php foreach ($gioiThieu as $post) { ?>
             <div style="width: 25%;">
                 <img style="width: 300px;height: 200px" src="<?php echo $post['thumbnail'] ?>">
-                <h6> <?php echo $post['title'] ?></h6>
+
+                <a href="/humg/detail.php?id=<?php echo $post['id'] ?>"><h6> <?php echo $post['title'] ?></h6></a>
                 <p><?php echo $post['content'] ?></p>
             </div>
         <?php } ?>
     </div>
 </section>
 <section>
-<div >
-    <?php foreach ($hoptacs as $hoptac) { ?>
-        <div style="width: 100%; display: flex">
-            <div style="margin-right: 50px;margin-left: 50px"><h3 style="color: blue"><?php echo $hoptac['cuong'] ?></h3>
-                <img style="width: 400px;height: 300px;" src="<?php echo $hoptac['image'] ?>">
-            <h6> <?php echo $hoptac['tittle'] ?></h6>
-            </div>
-            <div><p style="margin-right: 400px;margin-top:50px;"><?php echo $hoptac['content'] ?></p></div>
+    <a href="https://humg.edu.vn/tin-tuc/Pages/default.aspx">
+        <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">THÔNG BÁO</h5></button>
+    </a>
+    <div style="display: flex;border-top: 40px;margin-left: 50px">
+    <?php foreach ($thongBao as $post) { ?>
+        <div style="width: 25%;">
+            <img style="width: 300px;height: 200px" src="<?php echo $post['thumbnail'] ?>">
+
+            <a href="/humg/detail.php?id=<?php echo $post['id'] ?>"><h6> <?php echo $post['title'] ?></h6></a>
+            <p><?php echo $post['content'] ?></p>
         </div>
+    </div>
     <?php } ?>
-</div>
-    <td>
-        <a href="add.php">
-            <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">THÊM TIN </h5></button>
-        </a>
-    </td>
-    <td>
-        <a href="add.php">
-            <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">SỬA TIN </h5></button>
-        </a>
-    </td>
-    <td>
-        <a href="add.php">
-            <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">XOÁ TIN </h5></button>
-        </a>
-    </td>
 </section>
+    <section>
+        <a href="https://humg.edu.vn/tin-tuc/Pages/default.aspx">
+            <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">BẢN TIN</h5></button>
+        </a>
+        <div style="display: flex;border-top: 40px;margin-left: 50px">
+            <?php foreach ($banTin  as $post) { ?>
+            <div style="width: 25%;">
+                <img style="width: 300px;height: 200px" src="<?php echo $post['thumbnail'] ?>">
+
+                <a href="/humg/detail.php?id=<?php echo $post['id'] ?>"><h6> <?php echo $post['title'] ?></h6></a>
+                <p><?php echo $post['content'] ?></p>
+            </div>
+        </div>
+        <?php } ?>
+    </section>
+    <section>
+        <a href="https://humg.edu.vn/tin-tuc/Pages/default.aspx">
+            <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><h5 style="color: blue;">ĐÀO TẠO</h5></button>
+        </a>
+        <div style="display: flex;border-top: 40px;margin-left: 50px">
+            <?php foreach ($daoTao as $post) { ?>
+            <div style="width: 25%;">
+                <img style="width: 300px;height: 200px" src="<?php echo $post['thumbnail'] ?>">
+
+                <a href="/humg/detail.php?id=<?php echo $post['id'] ?>"><h6> <?php echo $post['title'] ?></h6></a>
+                <p><?php echo $post['content'] ?></p>
+            </div>
+        </div>
+        <?php } ?>
+    </section>
 </body>
 
 </html>

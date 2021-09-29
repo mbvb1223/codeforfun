@@ -1,23 +1,8 @@
+
 <?php
-
-$tittle = $content = $created_at = $category_id = $thumbnail = '';
-if (!empty($_POST)) {
-//    // var_dump($_POST); die();
-//    if (isset($_POST['tittle'])) {
-//        $tittle = $_POST['cuong'];
-//    }
-//    if (isset($_POST['content'])) {
-//        $content = $_POST['content'];
-//    }
-
-    require_once('./models/post.php');
-//    $sql = 'insert into posts(title, content,created_at,category_id,thumbnail) values ("' . $tittle . '", "' . $content . '","' . $created_at. '","' . $category_id . '","' . $thumbnail. '",)';
-
-    $postModel = new Post();
-    $postModel->create($_POST);
-
-    header('Location: indexController.php');
-    die();
+require_once('./models/post.php');
+if (isset($_GET['id'])) {
+    echo $_GET['id'];
 }
 ?>
 <!DOCTYPE html>
@@ -35,9 +20,6 @@ if (!empty($_POST)) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-
-<head>
     <title>Thêm/Sửa Bản Tin</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -52,44 +34,34 @@ if (!empty($_POST)) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h2 class="text-center">Thêm Bản Tin</h2>
-        </div>
-        <div class="panel-body">
-            <form method="post" action="add.php">
+                <form method="post" action="sua.php">
                 <div class="form-group">
                     <label for="name">tittle</label>
                     <input name="tittle" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $tittle ?>">
+                           value="<?php echo $post['title'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="name">content</label>
                     <input name="content" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $content ?>">
+                           value="">
                 </div>
                 <div class="form-group">
                     <label for="name">created_at</label>
                     <input name="created_at" required="true" type="date" class="form-control" tittle="name"
-                           value="<?= $created_at ?>">
+                           value="">
                 </div>
                 <div class="form-group">
                     <label for="name">category_id</label>
                     <input name="category_id" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $category_id ?>">
+                           value="">
                 </div>
                 <div class="form-group">
                     <label for="name">thumbnail</label>
                     <input name="thumbnail" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $thumbnail ?>">
+                           value="">
                 </div>
                 <button class="btn btn-success">Lưu</button>
             </form>
-        </div>
-    </div>
-</div>
 </body>
 
 </html>

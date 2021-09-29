@@ -1,25 +1,3 @@
-<?php
-
-$tittle = $content = '';
-if (!empty($_POST)) {
-//    // var_dump($_POST); die();
-//    if (isset($_POST['tittle'])) {
-//        $tittle = $_POST['cuong'];
-//    }
-//    if (isset($_POST['content'])) {
-//        $content = $_POST['content'];
-//    }
-
-    require_once('./models/post.php');
-//    $sql = 'insert into posts(title, content) values ("' . $tittle . '", "' . $content . '")';
-
-    $postModel = new Post();
-    $postModel->create($_POST);
-
-    header('Location: indexController.php');
-    die();
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -35,46 +13,55 @@ if (!empty($_POST)) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
 
-<head>
     <title>Thêm/Sửa Bản Tin</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2 class="text-center">Thêm Bản Tin</h2>
+            <h2 class="text-center">Quản Lý Bản Tin</h2>
         </div>
         <div class="panel-body">
-            <form method="post" action="create.php">
-                <div class="form-group">
-                    <label for="name">tittle</label>
-                    <input name="cuong" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $tittle ?>">
-                </div>
-                <div class="form-group">
-                    <label for="name">content</label>
-                    <input name="content" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $tittle ?>">
-                </div>
-                <button class="btn btn-success">Lưu</button>
-            </form>
+            <a href="add.php">
+                <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Bản Tin</button>
+            </a>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="50px">id</th>
+<!--                    <th>thumbnail</th>-->
+                    <th>title</th>
+<!--                    <th>content</th>-->
+                    <th>created_at</th>
+                    <th>caterogy_id</th>
+                    <th width="50px">Sua</th>
+                    <th width="50px">xoa</th>
+                </tr>
+                </thead>
+                <?php foreach ($posts as $post)  { ?>
+                <tr>
+                    <td><?php echo $post['id'] ?></td>
+                    <td><?php echo $post['title'] ?></td>
+<!--                    <td>   --><?php //foreach ($posts as $post) ?>
+<!--                        --><?php //echo $post['thumbnail'] ?>
+<!--                    </td>-->
+<!--                    <td>   --><?php //foreach ($posts as $post) ?>
+<!--                        --><?php //echo $post['content'] ?>
+<!--                    </td>-->
+                    <td><?php echo $post['created_at'] ?></td>
+                    <td><?php echo $post['category_id'] ?></td>
+                    <td><a href="sua.php?id=<?php echo $post['id'] ?>">
+                            <button class="btn btn-success" style="margin-bottom: 15px;">SỬA</button>
+                        </a></td>
+                    <td><a href="xoa.php?id=<?php echo $post['id'] ?>">
+                            <button class="btn btn-success" style="margin-bottom: 15px;">XOÁ</button>
+                        </a></td>
+                </tr>
+                <?php } ?>
+            </table>
         </div>
     </div>
 </div>
 </body>
-
 </html>
