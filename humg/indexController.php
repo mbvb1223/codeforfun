@@ -1,13 +1,11 @@
 <?php
 require_once('./models/post.php');
 require_once('./models/category.php');
-require_once('./models/hoptac.php');
 class IndexController
 {
     public function index()
     {
         $posts = $this->getPosts();
-        $delete = $this->delete();
         $parentCategories = $this->getParentCategories();
         $childCategories = $this->getChildCategories();
         $gioiThieu = $this->getPostsByCategoryId(1);
@@ -22,11 +20,7 @@ class IndexController
         $postModel = new Post();
         return $postModel->getAll();
     }
-    public function delete()
-    {
-        $deleteModel = new Post();
-        return $deleteModel->delete();
-    }
+
     public function getParentCategories()
     {
         $categoryModel = new Category();

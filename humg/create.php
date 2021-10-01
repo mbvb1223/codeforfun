@@ -57,6 +57,9 @@
                     <td><a href="xoa.php?id=<?php echo $post['id'] ?>">
                             <button class="btn btn-success" style="margin-bottom: 15px;">XOÁ</button>
                         </a></td>
+                    <td><a href="sua.php?id=<?php echo $post['id'] ?>">
+                            <button class="btn btn-success" style="margin-bottom: 15px;">XEM</button>
+                        </a></td>
                 </tr>
                 <?php } ?>
             </table>

@@ -1,9 +1,37 @@
+<?php
+if (isset($_POST['Lưu'])) {
+    $sql = "UPDATE post set tittle = '$tittle',content ='$content',created_at ='$createad_at',category_id = $category_id,thumbnail = $thumbnail where id=$id ";
 
+    $result = $conn->query($sql);
+
+    $posts = $result->fetch_array(MYSQLI_ASSOC);
+}
+?>
 <?php
 require_once('./models/post.php');
-if (isset($_GET['id'])) {
-    echo $_GET['id'];
-}
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "baitap5";
+
+// Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT * FROM posts WHERE id=$id";
+        $result = $conn->query($sql);
+
+        $posts = $result->fetch_array(MYSQLI_ASSOC);
+       // $sql = "UPDATE post set tittle = '$tittle',content ='$content',created_at ='$createad_at',category_id = $category_id,thumbnail = $thumbnail where id=$id ";
+
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,27 +66,27 @@ if (isset($_GET['id'])) {
                 <div class="form-group">
                     <label for="name">tittle</label>
                     <input name="tittle" required="true" type="text" class="form-control" tittle="name"
-                           value="<?php echo $post['title'] ?>">
+                           value="<?php echo $posts['title'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">content</label>
                     <input name="content" required="true" type="text" class="form-control" tittle="name"
-                           value="">
+                           value="<?php echo $posts['content'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">created_at</label>
                     <input name="created_at" required="true" type="date" class="form-control" tittle="name"
-                           value="">
+                           value="<?php echo $posts['created_at'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">category_id</label>
                     <input name="category_id" required="true" type="text" class="form-control" tittle="name"
-                           value="">
+                           value="<?php echo $posts['category_id'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">thumbnail</label>
                     <input name="thumbnail" required="true" type="text" class="form-control" tittle="name"
-                           value="">
+                           value="<?php echo $posts['thumbnail'];?>">
                 </div>
                 <button class="btn btn-success">Lưu</button>
             </form>

@@ -16,7 +16,7 @@ if (!empty($_POST)) {
     $postModel = new Post();
     $postModel->create($_POST);
 
-    header('Location: indexController.php');
+    header('Location: createController.php');
     die();
 }
 ?>

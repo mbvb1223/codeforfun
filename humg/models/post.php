@@ -47,7 +47,7 @@ class Post
         return $posts;
     }
 
-    public function create($data)
+    public function create()
     {
         $servername = "localhost";
         $username = "root";
@@ -57,11 +57,11 @@ class Post
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        $title = $data['tittle'];
-        $content = $data['content'];
-        $created_at = $data['created_at'];
-        $category_id = $data['category_id'];
-        $thumbnail = $data['thumbnail'];
+        $title = $_POST['tittle'];
+        $content = $_POST['content'];
+        $created_at = $_POST['created_at'];
+        $category_id = $_POST['category_id'];
+        $thumbnail = $_POST['thumbnail'];
         $sql = "insert into posts(title, content, created_at, category_id, thumbnail) values ('$title', '$content', '$created_at', '$category_id', '$thumbnail')";
 //        $conn->query($sql);
 
@@ -74,23 +74,6 @@ class Post
         $conn->close();
 
         return true;
-    }
-    public function delete()
-    {
-        $id= $_GET['id'];
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "baitap5";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        $sql = "DELETE FROM post WHERE id=$id";
-
-        $conn->close();
-
-        return $posts;
     }
 
 }
