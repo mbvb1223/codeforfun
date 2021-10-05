@@ -1,5 +1,5 @@
 <?php
-require_once('./models/post.php');
+require_once('./models/Post.php');
 class Create
 {
     public function index()

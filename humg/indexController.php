@@ -1,5 +1,5 @@
 <?php
-require_once('./models/post.php');
+require_once('./models/Post.php');
 require_once('./models/category.php');
 class IndexController
 {

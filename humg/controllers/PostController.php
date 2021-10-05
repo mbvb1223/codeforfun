@@ -1,9 +1,19 @@
 <?php
-require_once('../models/post.php');
+require_once('../models/Post.php');
 
 class PostController
 {
-    public function edit()
+    public function create()
+    {
+        // show form create a new post
+    }
+
+    public function store()
+    {
+        // submit post data -> save into database
+    }
+
+    public function show()
     {
         $postId = $_GET['id'];
 
@@ -17,6 +27,16 @@ class PostController
         require "../views/post_edit.phtml";
     }
 
+    public function update()
+    {
+        // update new data for existing post.
+    }
+
+    public function destroy()
+    {
+        // Delete a post by ID
+    }
+
     public function index()
     {
         $postModel = new Post();
@@ -24,8 +44,15 @@ class PostController
 
         require "../views/post_index.phtml";
     }
+
+    public function call()
+    {
+        $method = $_GET['action'];
+
+        $this->{$method};
+    }
 }
 
 $a = new PostController();
 
-$a->edit();
+$a->call();

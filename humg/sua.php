@@ -1,6 +1,6 @@
 
 <?php
-require_once('./models/post.php');
+require_once('./models/Post.php');
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];

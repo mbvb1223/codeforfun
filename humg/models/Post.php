@@ -64,6 +64,7 @@ class Post extends BaseModel
 
         return true;
     }
+
     public function update($array)
     {
         $servername = "localhost";
@@ -92,6 +93,7 @@ class Post extends BaseModel
 
         return true;
     }
+
     public function updateid()
     {
         $servername = "localhost";

@@ -10,7 +10,7 @@ if (!empty($_POST)) {
 //        $content = $_POST['content'];
 //    }
 
-    require_once('./models/post.php');
+    require_once('./models/Post.php');
 //    $sql = 'insert into posts(title, content,created_at,category_id,thumbnail) values ("' . $tittle . '", "' . $content . '","' . $created_at. '","' . $category_id . '","' . $thumbnail. '",)';
 
     $postModel = new Post();
