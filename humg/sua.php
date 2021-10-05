@@ -1,18 +1,9 @@
-<?php
-if (isset($_POST['Lưu'])) {
-    $sql = "UPDATE post set tittle = '$tittle',content ='$content',created_at ='$createad_at',category_id = $category_id,thumbnail = $thumbnail where id=$id ";
 
-    $result = $conn->query($sql);
-
-    $posts = $result->fetch_array(MYSQLI_ASSOC);
-}
-?>
 <?php
 require_once('./models/post.php');
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -29,9 +20,17 @@ require_once('./models/post.php');
         $result = $conn->query($sql);
 
         $posts = $result->fetch_array(MYSQLI_ASSOC);
+
+} else{
+        $postModel = new Post();
+        $postModel->update($_POST);
+        header('Location: createController.php');
+
+}
+
+
        // $sql = "UPDATE post set tittle = '$tittle',content ='$content',created_at ='$createad_at',category_id = $category_id,thumbnail = $thumbnail where id=$id ";
 
-    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,6 +66,8 @@ require_once('./models/post.php');
                     <label for="name">tittle</label>
                     <input name="tittle" required="true" type="text" class="form-control" tittle="name"
                            value="<?php echo $posts['title'];?>">
+                    <input name="id"  type="hidden" class="form-control"
+                           value="<?php echo $posts['id'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">content</label>
