@@ -23,8 +23,8 @@
             <h2 class="text-center">Quản Lý Bản Tin</h2>
         </div>
         <div class="panel-body">
-            <a href="add.php">
-                <button class="btn btn-success" style="margin-bottom: 15px;">Thêm Bản Tin</button>
+            <a href="http://localhost/codeNew/humg/controllers/PostController.php?action=add">
+                <button  class="btn btn-success">Thêm Bản Tin</button>
             </a>
             <table class="table table-bordered table-hover">
                 <thead>
@@ -39,19 +39,23 @@
                     <th width="50px">xoa</th>
                 </tr>
                 </thead>
-                <?php foreach ($posts as $post)  { ?>
+                <?php
+
+                foreach ($posts as $post)  {
+
+                    ?>
                     <tr>
                         <td><?php echo $post['id'] ?></td>
                         <td><?php echo $post['title'] ?></td>
                         <td><?php echo $post['created_at'] ?></td>
                         <td><?php echo $post['category_id'] ?></td>
-                        <td><a href="sua.php?id=<?php echo $post['id'] ?>">
+                        <td><a href="http://localhost/codeNew/humg/controllers/PostController.php?action=showEdit&id=<?php echo $post['id'] ?>">
                                 <button class="btn btn-success" style="margin-bottom: 15px;">SỬA</button>
                             </a></td>
-                        <td><a href="xoa.php?id=<?php echo $post['id'] ?>">
+                        <td><a href="http://localhost/codeNew/humg/controllers/PostController.php?action=deletet&id=<?php echo $post['id'] ?>">
                                 <button class="btn btn-success" style="margin-bottom: 15px;">XOÁ</button>
                             </a></td>
-                        <td><a href="sua.php?id=<?php echo $post['id'] ?>">
+                        <td><a href="http://localhost/codeNew/humg/controllers/PostController.php?action=xem&id=<?php echo $post['id'] ?>">
                                 <button class="btn btn-success" style="margin-bottom: 15px;">XEM</button>
                             </a></td>
                     </tr>

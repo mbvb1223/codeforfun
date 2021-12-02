@@ -1,9 +1,6 @@
-<?php
-
-$tittle = $content = $created_at = $category_id = $thumbnail = '';
-?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,39 +27,37 @@ $tittle = $content = $created_at = $category_id = $thumbnail = '';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form method="post" action="http://localhost/codeNew/humg/controllers/PostController.php?action=edit">
-    <div class="form-group">
-
-        <input name="id"  type="hidden" class="form-control"
-               value="<?php echo $post['id'];?>">
-    </div>
+<form >
     <div class="form-group">
         <label for="name">tittle</label>
-        <input name="title" required="true" type="text" class="form-control" tittle="name"
+        <input name="tittle"  type="text" class="form-control" readonly
                value="<?php echo $post['title'];?>">
-
     </div>
     <div class="form-group">
         <label for="name">content</label>
-        <input name="content" required="true" type="text" class="form-control" tittle="name"
+        <input name="content"  type="text" class="form-control" readonly
                value="<?php echo $post['content'];?>">
+
+
     </div>
     <div class="form-group">
         <label for="name">created_at</label>
-        <input name="created_at" required="true" type="date" class="form-control" tittle="name"
+        <input name="created_at"  type="text" class="form-control" readonly
                value="<?php echo $post['created_at'];?>">
+
     </div>
     <div class="form-group">
         <label for="name">category_id</label>
-        <input name="category_id" required="true" type="text" class="form-control" tittle="name"
+        <input name="category_id"  type="text" class="form-control " readonly
                value="<?php echo $post['category_id'];?>">
+
     </div>
     <div class="form-group">
         <label for="name">thumbnail</label>
-        <input name="thumbnail" required="true" type="text" class="form-control" tittle="name"
+        <input name="thumbnail"  type="text" class="form-control " readonly
                value="<?php echo $post['thumbnail'];?>">
+
     </div>
-    <button class="btn btn-success">Lưu</button>
 </form>
 </body>
 
