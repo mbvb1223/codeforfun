@@ -1,24 +1,6 @@
 <?php
 
 $tittle = $content = $created_at = $category_id = $thumbnail = '';
-if (!empty($_POST)) {
-//    // var_dump($_POST); die();
-//    if (isset($_POST['tittle'])) {
-//        $tittle = $_POST['cuong'];
-//    }
-//    if (isset($_POST['content'])) {
-//        $content = $_POST['content'];
-//    }
-
-    require_once('./models/Post.php');
-    $postModel = new Post();
-    $postModel->create($_POST);
-    $sql = 'insert into posts(title, content,created_at,category_id,thumbnail) values ("' . $tittle . '", "' . $content . '","' . $created_at. '","' . $category_id . '","' . $thumbnail. '",)';
-
-
-    header('Location: createController.php');
-    die();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,37 +37,39 @@ if (!empty($_POST)) {
 
 <div class="container">
     <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h2 class="text-center">Thêm Bản Tin</h2>
-        </div>
         <div class="panel-body">
-            <form method="post" action="add.php">
+            <form method="post" action="http://localhost/codeNew/humg/controllers/PostController.php?action=store">
                 <div class="form-group">
                     <label for="name">tittle</label>
-                    <input name="tittle" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $tittle ?>">
+                    <input name="tittle"  type="text" class="form-control"
+                           value="<?php echo $tittle;?>">
+
                 </div>
                 <div class="form-group">
                     <label for="name">content</label>
-                    <input name="content" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $content ?>">
+                    <input name="content"  type="text" class="form-control"
+                           value="<?php echo $content;?>">
+
                 </div>
                 <div class="form-group">
                     <label for="name">created_at</label>
-                    <input name="created_at" required="true" type="date" class="form-control" tittle="name"
-                           value="<?= $created_at ?>">
+                    <input name="created_at"  type="date" class="form-control"
+                           value="<?php echo $created_at;?>">
+
                 </div>
                 <div class="form-group">
                     <label for="name">category_id</label>
-                    <input name="category_id" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $category_id ?>">
+                    <input name="category_id"  type="text" class="form-control"
+                           value="<?php echo $category_id;?>">
+
                 </div>
                 <div class="form-group">
                     <label for="name">thumbnail</label>
-                    <input name="thumbnail" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $thumbnail ?>">
+                    <input name="thumbnail"  type="text" class="form-control"
+                           value="<?php echo $thumbnail;?>">
+
                 </div>
-                <button class="btn btn-success">Lưu</button>
+                <button type="submit" class="btn btn-success">Lưu</button>
             </form>
         </div>
     </div>

@@ -1,24 +1,36 @@
+
 <?php
+require_once('./models/Post.php');
 
-$tittle = $content = $created_at = $category_id = $thumbnail = '';
-if (!empty($_POST)) {
-//    // var_dump($_POST); die();
-//    if (isset($_POST['tittle'])) {
-//        $tittle = $_POST['cuong'];
-//    }
-//    if (isset($_POST['content'])) {
-//        $content = $_POST['content'];
-//    }
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "baitap5";
 
-    require_once('./models/Post.php');
-    $postModel = new Post();
-    $postModel->create($_POST);
-    $sql = 'insert into posts(title, content,created_at,category_id,thumbnail) values ("' . $tittle . '", "' . $content . '","' . $created_at. '","' . $category_id . '","' . $thumbnail. '",)';
+// Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
+        $sql = "SELECT * FROM posts WHERE id=$id";
+        $result = $conn->query($sql);
 
-    header('Location: createController.php');
-    die();
+        $posts = $result->fetch_array(MYSQLI_ASSOC);
+
+} else{
+        $postModel = new Post();
+        $postModel->update($_POST);
+        header('Location: createController.php');
+
 }
+
+
+       // $sql = "UPDATE post set tittle = '$tittle',content ='$content',created_at ='$createad_at',category_id = $category_id,thumbnail = $thumbnail where id=$id ";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,9 +47,6 @@ if (!empty($_POST)) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-
-<head>
     <title>Thêm/Sửa Bản Tin</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -52,44 +61,36 @@ if (!empty($_POST)) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h2 class="text-center">Thêm Bản Tin</h2>
-        </div>
-        <div class="panel-body">
-            <form method="post" action="add.php">
+                <form method="post" action="sua.php">
                 <div class="form-group">
                     <label for="name">tittle</label>
                     <input name="tittle" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $tittle ?>">
+                           value="<?php echo $posts['title'];?>">
+                    <input name="id"  type="hidden" class="form-control"
+                           value="<?php echo $posts['id'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">content</label>
                     <input name="content" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $content ?>">
+                           value="<?php echo $posts['content'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">created_at</label>
                     <input name="created_at" required="true" type="date" class="form-control" tittle="name"
-                           value="<?= $created_at ?>">
+                           value="<?php echo $posts['created_at'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">category_id</label>
                     <input name="category_id" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $category_id ?>">
+                           value="<?php echo $posts['category_id'];?>">
                 </div>
                 <div class="form-group">
                     <label for="name">thumbnail</label>
                     <input name="thumbnail" required="true" type="text" class="form-control" tittle="name"
-                           value="<?= $thumbnail ?>">
+                           value="<?php echo $posts['thumbnail'];?>">
                 </div>
                 <button class="btn btn-success">Lưu</button>
             </form>
-        </div>
-    </div>
-</div>
 </body>
 
 </html>
